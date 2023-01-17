@@ -10,7 +10,6 @@ const exp = global.exports;
 //each target has its own executor, so there won't be any throttling when sending message to different numbers
 const executorQueueMap = new Map<string, OrderedPromiseExecutor>();
 
-// FIXME: Fix this, oh wait, no one contributes anymore
 exp('emitMessage', async ({ senderNumber, targetNumber, message, embed }: EmitMessageExportCtx) => {
   if (!executorQueueMap.has(targetNumber)) {
     executorQueueMap.set(targetNumber, new OrderedPromiseExecutor());
